@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {v4} from 'uuid'
 import UserDetails from '../UserDetails'
+import Header from '../Header'
 
 import './index.css'
 
@@ -101,95 +102,101 @@ class RegistrationHome extends Component {
     } = this.state
 
     return (
-      <div className="app-container">
-        <div className="responsive-container">
-          <div className="transaction-details">
-            <form className="transaction-form" onSubmit={this.onAddNewUser}>
-              <h1 className="transaction-header">Add Transaction</h1>
-              <label className="input-label" htmlFor="first name">
-                First Name
-              </label>
-              <input
-                type="text"
-                id="first name"
-                value={firstNameInput}
-                onChange={this.onChangeFirstNameInput}
-                className="input"
-                placeholder="first name"
-              />
+      <div>
+        <Header />
+        <div className="app-container">
+          <div className="responsive-container">
+            <div className="transaction-details">
+              <form className="transaction-form" onSubmit={this.onAddNewUser}>
+                <h1 className="transaction-header"> USER DETAILS </h1>
+                <label className="input-label" htmlFor="first name">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  id="first name"
+                  value={firstNameInput}
+                  onChange={this.onChangeFirstNameInput}
+                  className="input"
+                  placeholder="first name"
+                />
 
-              <label className="input-label" htmlFor="last name">
-                LAST NAME
-              </label>
-              <input
-                type="text"
-                id="last name"
-                className="input"
-                value={lastNameInput}
-                onChange={this.onChangeLastNameInput}
-                placeholder="last name"
-              />
-              <label className="input-label" htmlFor="phone number">
-                Phone Number
-              </label>
-              <input
-                type="text"
-                id="phone number"
-                className="input"
-                value={phoneNumberInput}
-                onChange={this.onChangePhoneNumberInput}
-                placeholder="phone number"
-              />
+                <label className="input-label" htmlFor="last name">
+                  LAST NAME
+                </label>
+                <input
+                  type="text"
+                  id="last name"
+                  className="input"
+                  value={lastNameInput}
+                  onChange={this.onChangeLastNameInput}
+                  placeholder="last name"
+                />
+                <label className="input-label" htmlFor="phone number">
+                  Phone Number
+                </label>
+                <input
+                  type="text"
+                  id="phone number"
+                  className="input"
+                  value={phoneNumberInput}
+                  onChange={this.onChangePhoneNumberInput}
+                  placeholder="phone number"
+                />
 
-              <label className="input-label" htmlFor="password">
-                PASSWORD
-              </label>
-              <input
-                type="password"
-                id="password"
-                className="input"
-                value={passwordInput}
-                onChange={this.onChangePasswordInput}
-                placeholder="password"
-              />
-              <label className="input-label" htmlFor="select">
-                TYPE
-              </label>
-              <select
-                id="select"
-                className="input"
-                value={optionId}
-                onChange={this.onChangeOptionId}
-              >
-                {userTypeOptions.map(eachOption => (
-                  <option key={eachOption.optionId} value={eachOption.optionId}>
-                    {eachOption.displayText}
-                  </option>
-                ))}
-              </select>
-              <button type="submit" className="button">
-                Add
-              </button>
-            </form>
-            <div className="history-transactions">
-              <h1 className="transaction-header">History</h1>
-              <div className="transactions-table-container">
-                <ul className="transactions-table">
-                  <li className="table-header">
-                    <p className="table-header-cell">FirstName</p>
-                    <p className="table-header-cell">LastName</p>
-                    <p className="table-header-cell">Phone Number</p>
-                    <p className="table-header-cell">password</p>
-                    <p className="table-header-cell">Type</p>
-                  </li>
-                  {usersList.map(eachUser => (
-                    <UserDetails
-                      key={eachUser.emailId}
-                      transactionDetails={eachUser}
-                      deleteUserDetails={this.deleteUserDetails}
-                    />
+                <label className="input-label" htmlFor="password">
+                  PASSWORD
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  className="input"
+                  value={passwordInput}
+                  onChange={this.onChangePasswordInput}
+                  placeholder="password"
+                />
+                <label className="input-label" htmlFor="select">
+                  TYPE
+                </label>
+                <select
+                  id="select"
+                  className="input"
+                  value={optionId}
+                  onChange={this.onChangeOptionId}
+                >
+                  {userTypeOptions.map(eachOption => (
+                    <option
+                      key={eachOption.optionId}
+                      value={eachOption.optionId}
+                    >
+                      {eachOption.displayText}
+                    </option>
                   ))}
-                </ul>
+                </select>
+                <button type="submit" className="button">
+                  Add
+                </button>
+              </form>
+              <div className="history-transactions">
+                <h1 className="transaction-header">History</h1>
+                <div className="transactions-table-container">
+                  <ul className="transactions-table">
+                    <li className="table-header">
+                      <p className="table-header-cell">FirstName</p>
+                      <p className="table-header-cell">LastName</p>
+                      <p className="table-header-cell">Phone Number</p>
+                      <p className="table-header-cell">password</p>
+                      <p className="table-header-cell">Type</p>
+                    </li>
+                    {usersList.map(eachUser => (
+                      <UserDetails
+                        key={eachUser.emailId}
+                        transactionDetails={eachUser}
+                        deleteUserDetails={this.deleteUserDetails}
+                      />
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
